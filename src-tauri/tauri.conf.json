@@ -34,6 +34,46 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "resources": [],
+    "externalBin": [],
+    "deb":{
+      "depends": []
+    },
+    "dmg":{
+      "background": "path/to/your/background.png",
+        "icon": "path/to/your/dmg-icon.icns",
+        "iconSize": 80,
+        "contents": [
+          { "x": 410, "y": 150, "type": "link", "path": "/Applications" },
+          { "x": 130, "y": 150, "type": "file", "path": "path/to/your/Noty.app" }
+        ],
+        "sign": false
+    },
+    "msi": {
+      "upgradeUuid": "",
+      "productName": "(N)oty",
+        " Wix": {
+          "language": [
+            { "id": 1033, "name": "English (United States)" }
+          ]
+        }
+    },
+    "appimage": {
+        "bundle": true
+    },
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "",
+      "signingIdentity": null,
+      "entitlements": null,
+      "exceptionDomain": "",
+      "applicationCategory": "public.app-category.developer-tools"
+    },
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": ""
+    }
   }
 }
