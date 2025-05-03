@@ -15,12 +15,14 @@ function App() {
       <Router>
         <Routes>
           <Route element={<Layout />}>
-            
-              <Route path="/" element={<Home />} />
+            <Route path="/" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route element={<RequireAuth />}>
+              <Route path="/home" element={<Home />} />
               <Route path="/notes" element={<Notes />} />
               <Route path="/todo" element={<Todo />} />
             </Route>
-          
+          </Route>
         </Routes>
       </Router>
     </PocketProvider>

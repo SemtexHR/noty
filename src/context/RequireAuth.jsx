@@ -6,7 +6,7 @@ export const RequireAuth = () =>{
     const location = useLocation();
 
     if(!user){
-        return (<Navigate to={{pathname: "/"}} state={{location}} replace/>);
+        return (<Navigate to={{pathname: "/home"}} state={{location}} replace/>);
     }
 
     return <Outlet/>;
