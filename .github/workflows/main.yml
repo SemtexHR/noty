@@ -90,7 +90,7 @@ jobs:
         with:
           name: 'macOS Installer'
           path: |
-            src-tauri/target/release/bundle/zip/*.zip
+            src-tauri/target/release/bundle/dmg/*.dmg
 
       - name: CI upload Linux
         if: ${{ github.ref_type == 'branch' && matrix.platform == 'ubuntu-latest' }}
