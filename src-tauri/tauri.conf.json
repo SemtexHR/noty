@@ -2,8 +2,13 @@
   "$schema": "https://schema.tauri.app/config/2",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "productName": "(N)oty",
   "version": "0.1.0",
+=======
+  "productName": "noty",
+  "version": "0.1.2",
+>>>>>>> Stashed changes
 =======
   "productName": "noty",
   "version": "0.1.2",
@@ -46,8 +51,12 @@
       "icons/icon.ico"
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     ],
     "macOS": {
+=======
+    ],"macOS": {
+>>>>>>> Stashed changes
 =======
     ],"macOS": {
 >>>>>>> Stashed changes
