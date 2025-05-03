@@ -122,3 +122,27 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.args }}
+
+    #FixExecute
+      - name: Fix executable permissions
+        if: matrix.platform == 'macos-latest'
+        run: chmod +x src-tauri/target/release/bundle/macos/*.app/Contents/MacOS/*
+
+      - name: Remove quarantine attribute
+        if: matrix.platform == 'macos-latest'
+        run: xattr -dr com.apple.quarantine src-tauri/target/release/bundle/macos/*.app
+
+      - name: Create DMG from .app
+        if: matrix.platform == 'macos-latest'
+        run: |
+          hdiutil create -volname "(N)oty" \
+            -srcfolder src-tauri/target/release/bundle/macos/*.app \
+            -ov -format UDZO Noty.dmg
+
+      - name: Upload macOS DMG
+        if: matrix.platform == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'macOS DMG'
+          path: Noty.dmg
+
