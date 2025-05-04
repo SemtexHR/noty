@@ -72,10 +72,6 @@ jobs:
           mkdir -p src-tauri/dmg-resources
           ln -s /Applications src-tauri/dmg-resources/Applications
 
-      - name: CI Build
-        if: ${{ github.ref_type == 'branch' }}
-        run: npm run tauri build
-
       - name: CI upload Windows
         if: ${{ github.ref_type == 'branch' && matrix.platform == 'windows-latest' }}
         uses: actions/upload-artifact@v4
