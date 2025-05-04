@@ -98,14 +98,6 @@ jobs:
             src-tauri/target/release/bundle/deb/*.deb
             src-tauri/target/release/bundle/AppImage/*.AppImage
 
-      - name: Fix executable permissions
-        if: matrix.platform == 'macos-latest'
-        run: chmod +x src-tauri/target/release/bundle/macos/*.app/Contents/MacOS/*
-
-      - name: Remove quarantine attribute
-        if: matrix.platform == 'macos-latest'
-        run: xattr -dr com.apple.quarantine src-tauri/target/release/bundle/macos/*.app
-
       - name: Build Tauri app and publish release
         uses: tauri-apps/tauri-action@v0
         if: ${{ github.ref_type == 'tag' }}
