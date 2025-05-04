@@ -19,17 +19,19 @@ jobs:
       - name: Build changelog
         id: build_changelog
         run: |
+          # NOTE: if commits subjects are standardized, you can filter the git log based on feat: and fix:
+          # and then replace "feat:" with "New: " and "fix:" with "Fixed "
+          # when AI gets good, we can also summarized commits into a bullet point list
           PREV_TAG=$(git tag --list v* | tail -n2 | head -n1)
-          echo "changelog=$(git log $PREV_TAG...${{ github.ref_name }} --pretty=format:'- %s')" >> $GITHUB_OUTPUT
+          echo "changelog=$(git log $PREV_TAG...${{ github.ref_name }} --pretty=format:"- %s")" >> $GITHUB_OUTPUT
     outputs:
       changelog: ${{ steps.build_changelog.outputs.changelog }}
-
   release:
     strategy:
       fail-fast: false
       matrix:
         include:
-          - platform: 'macos-latest'
+          - platform: 'macos-latest' # for Arm based macs (M1 and above).
             args: '--target aarch64-apple-darwin'
           - platform: 'windows-latest'
             args: ''
@@ -38,16 +40,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
+        # NOTE: enterprise developers may hard code a version
         with:
           node-version: 'lts/*'
           cache: npm
+          # node-version-file: '.nvmrc'
 
       - name: Install Rust stable
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@stable # Set this to dtolnay/rust-toolchain@nightly
         with:
+          # Those targets are only used on macos runners so it's in an if to slightly speed up windows and linux builds.
           targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
       - name: Rust cache
@@ -55,22 +60,20 @@ jobs:
         with:
           workspaces: './src-tauri -> target'
 
-      - name: Install frontend dependencies
-        run: npm install
-
-      # Optional: if on Linux and needed
       - name: Install Ubuntu dependencies
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt update
           xargs sudo apt install -y < environment/apt_packages.txt
 
-      # Inject Applications shortcut for Tauri dmg
-      - name: Create Applications symlink for DMG
-        if: matrix.platform == 'macos-latest'
+      - name: Install frontend dependencies
         run: |
-          mkdir -p src-tauri/dmg-resources
-          ln -s /Applications src-tauri/dmg-resources/Applications
+          npm install
+
+      - name: CI Build
+        if: ${{ github.ref_type == 'branch' }}
+        run: |
+          npm run tauri build
 
       - name: CI upload Windows
         if: ${{ github.ref_type == 'branch' && matrix.platform == 'windows-latest' }}
@@ -98,13 +101,19 @@ jobs:
             src-tauri/target/release/bundle/deb/*.deb
             src-tauri/target/release/bundle/AppImage/*.AppImage
 
-      - name: Build Tauri app and publish release
+      # TODO: https://tauri.app/v1/guides/building/linux#cross-compiling-tauri-applications-for-arm-based-devices
+      - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
         if: ${{ github.ref_type == 'tag' }}
+        # if u get Error: Resource not accessible by integration
+        # go to repository Settings => Action => General => Workflow permissions => Switch to Read and Write permisions
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         # TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+         # TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
+          # tauri-action replaces \_\_VERSION\_\_ with the app version
           tagName: ${{ github.ref_name }}
           releaseName: "${{ env.APP_NAME }} v__VERSION__"
           releaseBody: |
@@ -113,3 +122,26 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.args }}
+
+    #FixExecute
+      - name: Fix executable permissions
+        if: matrix.platform == 'macos-latest'
+        run: chmod +x src-tauri/target/release/bundle/macos/*.app/Contents/MacOS/*
+
+      - name: Remove quarantine attribute
+        if: matrix.platform == 'macos-latest'
+        run: xattr -dr com.apple.quarantine src-tauri/target/release/bundle/macos/*.app
+
+      - name: Create DMG from .app
+        if: matrix.platform == 'macos-latest'
+        run: |
+          hdiutil create -volname "(N)oty" \
+            -srcfolder src-tauri/target/release/bundle/macos/*.app \
+            -ov -format UDZO Noty.dmg
+
+      - name: Upload macOS DMG
+        if: matrix.platform == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'macOS DMG'
+          path: Noty.dmg
