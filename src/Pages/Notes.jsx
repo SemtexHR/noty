@@ -5,7 +5,7 @@ import Tiptap from "../components/TipTap/TipTap";
 const Notes = () => {
   return (
     <>
-      <div className=" relative grid  grid-cols-3 grid-rows-10">
+      <div className=" relative grid grid-cols-3 grid-rows-10">
         <div className="row-start-2">
           <PageTitleNoC name="Notes" />
         </div>

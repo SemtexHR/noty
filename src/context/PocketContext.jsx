@@ -11,7 +11,7 @@ import { useInterval } from "usehooks-ts";
 import { jwtDecode } from "jwt-decode";
 import ms from "ms";
 
-const BASE_URL = "http://192.168.0.67:80";
+const BASE_URL = "http://209.38.185.18:80";
 const fiveMininMs = ms("5m");
 const twoMininMs = ms("2m");
 

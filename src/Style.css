@@ -113,7 +113,7 @@
   }
 
   .icnStyle{
-    @apply bg-transparent text-hover p-1 transition-all hover:text-text hover:bg-hover;
+    @apply bg-transparent text-hover p-1 transition-all hover:text-text hover:bg-hover active:bg-hover;
   }
 
   
