@@ -32,8 +32,10 @@ export default function PageTitle({ name }) {
         <h1 className="font-Poppins text-text text-6xl  max-md:text-3xl transition-all leading-none">
           {name}
         </h1>
+        <div className="w-0.5" />
         <p className="font-JetBrains text-text/25 text-2xl">{currentDate}</p>
       </div>
+      <div/>
     </div>
   );
 }

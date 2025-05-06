@@ -13,7 +13,7 @@ const SignUp = () => {
     async (e) => {
       e?.preventDefault();
       await register(emailRef.current.value, passwordRef.current.value);
-      navigate("/sign-in");
+      navigate("/");
     },
     [register]
   );
