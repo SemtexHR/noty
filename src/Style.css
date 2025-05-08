@@ -37,6 +37,9 @@
     --note: #efefef;
     --titlecolor: #ffa928;
     --title: 0px 10px 10px 0px;
+    --circle1: #B132FF;
+    --circle2: #001AFF;
+    --circle3: #FF9900;
   }
 
   [data-theme="brat"] {
@@ -54,6 +57,9 @@
     --note: #cdcdcd;
     --titlecolor: #8ace00;
     --title: 0px 0px 0px 0px;
+    --circle1: #EA00FF;
+    --circle2: #000000;
+    --circle3: #8ACE00;
   }
 
   [data-theme="positions"] {
@@ -71,6 +77,9 @@
     --note: #c1d0cd;
     --titlecolor: #8aa39d;
     --title: 0px 20px 20px 0px;
+    --circle1: #8AA39D;
+    --circle2: #678B7F;
+    --circle3: #4C6E60;
   }
 
   [data-theme="mono"] {
@@ -86,8 +95,31 @@
     --logout: #2b2b2b;
     --rad: 10px;
     --note: #9c9c9c;
-    --titlecolor: #ff9900;
+    --titlecolor: #ffffff;
     --title: 0px 10px 10px 0px;
+    --circle1: white;
+    --circle2: white;
+    --circle3: white;
+  }
+
+  [data-theme="Cat"] {
+    --background: #303446;
+    --main: #F2D5CF;
+    --text: #ffffff;
+    --hover: #000000;
+    --sec: #51576D;
+    --cal: #51576D;
+    --caltext: #ffffff;
+    --weather: #51576D;
+    --acc: #F2D5CF;
+    --logout: #E5C890;
+    --rad: 35px;
+    --note: #51576D;
+    --titlecolor: #F2D5CF;
+    --title: 0px 35px 35px 0px;
+    --circle1: #BABBF1;
+    --circle2: #E5C890;
+    --circle3: #EEBEBE;
   }
 }
 
