@@ -40,6 +40,12 @@ export const PocketProvider = ({ children }) => {
     return await pb.collection("users").authWithPassword(email, password);
   }, []);
 
+  const loginWithGoogle = useCallback(async () => {
+    return await pb
+      .collection("users")
+      .authWithOAuth2({ provider: "google" });
+  });
+
   const logout = useCallback(() => {
     pb.authStore.clear();
   }, []);
@@ -58,7 +64,7 @@ export const PocketProvider = ({ children }) => {
 
   return (
     <PocketContext.Provider
-      value={{ register, login, logout, user, token, pb }}
+      value={{ register, login, logout, loginWithGoogle ,user, token, pb }}
     >
       {children}
     </PocketContext.Provider>

@@ -178,6 +178,23 @@
     border-radius: 3px;
     width: 100%;
   }
+
+  h1{
+    font-size: 30px;
+  }
+  h2{
+    font-size: 25px;
+  }
+  h3{
+    font-size: 20px;
+  }
+  h4{
+    font-size: 18px;
+  }
+  h5{
+    font-size: 16px;
+  }
+
   p{
     font-size: 15px;
   }

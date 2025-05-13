@@ -8,7 +8,7 @@ import "../Style.css";
 const SignIn = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = usePocket();
+  const { login, loginWithGoogle } = usePocket();
   const navigate = useNavigate();
 
   const handleOnSubmit = useCallback(
@@ -19,6 +19,13 @@ const SignIn = () => {
     },
     [login]
   );
+
+
+  const handleGoogleSignIn = useCallback(
+    async (e) => {
+      e?.preventDefault();
+      await loginWithGoogle().navigate("/home");
+    })
 
   return (
     <section className=" fixed h-full w-full flex justify-center items-center">
@@ -47,6 +54,7 @@ const SignIn = () => {
             className="p-3 bg-main rad w-138 h-[55px] text-hover focus:outline-none"
           />
         </div>
+        <button onClick={handleGoogleSignIn}> Log-In with Google</button>
 
         <div className="flex flex-row justify-evenly gap-x-7">
           <button

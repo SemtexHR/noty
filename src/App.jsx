@@ -9,6 +9,12 @@ import SignUp from "./Pages/SignUp";
 import Layout from "./components/TopBar/Layout";
 import { PocketProvider } from "./context/PocketContext";
 import { RequireAuth } from "./context/RequireAuth";
+import { Client } from 'appwrite';
+
+const client = new Client();
+client
+    .setEndpoint('https://fra.cloud.appwrite.io/v1')
+    .setProject('681dc9ac0003c9d03f61');
 
 
 const savedTheme = localStorage.getItem("theme") || "default";

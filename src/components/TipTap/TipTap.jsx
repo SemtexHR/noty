@@ -14,7 +14,7 @@ import {
   ListBulletIcon,
   ArrowUturnRightIcon,
   ArrowUturnLeftIcon,
-  CodeBracketSquareIcon
+  CodeBracketSquareIcon,
 } from "@heroicons/react/16/solid";
 
 import { usePocket } from "../../context/PocketContext";
@@ -64,7 +64,7 @@ const Tiptap = () => {
 
   return (
     <>
-    <div className="h-5" />
+      <div className="h-5" />
       <div className="bg-main flex w-[645px] h-[53px] rad items-center justify-evenly drop">
         <div className=" flex justify-evenly gap-2.5">
           <button
@@ -79,28 +79,38 @@ const Tiptap = () => {
           <button
             onClick={() => editor.chain().focus().toggleItalic().run()}
             disabled={!editor.can().chain().focus().toggleItalic().run()}
-            className={` icnStyle rad ${editor.isActive("italic") ? "is-active" : ""}`}
+            className={` icnStyle rad ${
+              editor.isActive("italic") ? "is-active" : ""
+            }`}
           >
             <ItalicIcon className="icnsize" />
           </button>
           <button
             onClick={() => editor.chain().focus().toggleStrike().run()}
             disabled={!editor.can().chain().focus().toggleStrike().run()}
-            className={` icnStyle rad  ${editor.isActive("strike") ? "is-active" : ""}`}
+            className={` icnStyle rad  ${
+              editor.isActive("strike") ? "is-active" : ""
+            }`}
           >
             <StrikethroughIcon className="icnsize" />
           </button>
           <button
             onClick={() => editor.chain().focus().toggleCode().run()}
             disabled={!editor.can().chain().focus().toggleCode().run()}
-            className={`icnStyle rad ${editor.isActive("code") ? "is-active" : ""}`}
+            className={`icnStyle rad ${
+              editor.isActive("code") ? "is-active" : ""
+            }`}
           >
             <CodeBracketIcon className="icnsize" />
           </button>
-          <button onClick={() => editor.chain().focus().unsetAllMarks().run()} className="icnStyle rad ">
-            
-          </button>
-          <button onClick={() => editor.chain().focus().clearNodes().run()} className="icnStyle rad ">
+          <button
+            onClick={() => editor.chain().focus().unsetAllMarks().run()}
+            className="icnStyle rad "
+          ></button>
+          <button
+            onClick={() => editor.chain().focus().clearNodes().run()}
+            className="icnStyle rad "
+          >
             Clear nodes
           </button>
           <button
@@ -112,19 +122,21 @@ const Tiptap = () => {
 
           <button
             onClick={() => editor.chain().focus().toggleBulletList().run()}
-            className={`icnStyle rad  ${editor.isActive("bulletList") ? "is-active" : ""}`}
+            className={`icnStyle rad  ${
+              editor.isActive("bulletList") ? "is-active" : ""
+            }`}
           >
             <ListBulletIcon className="icnsize" />
           </button>
           <button
             onClick={() =>
-              editor.chain().focus().setFontFamily("JetBrainsMono").run()
+              editor.chain().focus().setFontFamily("JetBrains Mono").run()
             }
-            className={
-              ` icnStyle rad  ${editor.isActive("textStyle", { fontFamily: "JetBrainsMono" })
+            className={` icnStyle rad  ${
+              editor.isActive("textStyle", { fontFamily: "JetBrains Mono" })
                 ? "is-active"
-                : ""}`
-            }
+                : ""
+            }`}
             data-test-id="jetbrainsmono"
           >
             Mono
@@ -137,22 +149,25 @@ const Tiptap = () => {
           </button>
           <button
             onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-            className={` icnStyle rad ${editor.isActive("codeBlock") ? "is-active" : ""}`}
+            className={` icnStyle rad ${
+              editor.isActive("codeBlock") ? "is-active" : ""
+            }`}
           >
             <CodeBracketSquareIcon className="icnsize" />
           </button>
           <button
             onClick={() => editor.chain().focus().toggleBlockquote().run()}
-            className={editor.isActive("blockquote") ? "is-active" : ""}
+            className={`icnStyle rad ${editor.isActive("blockquote") ? "is-active" : ""}`}
           >
             ""
           </button>
           <button
             onClick={() => editor.chain().focus().setHorizontalRule().run()}
+            className="`icnStyle rad"
           >
             Horizontal rule
           </button>
-          <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+          <button onClick={() => editor.chain().focus().setHardBreak().run()} className="`icnStyle rad">
             Hard break
           </button>
           <button
@@ -176,82 +191,75 @@ const Tiptap = () => {
             }
             value={editor.getAttributes("textStyle").color}
             data-testid="setColor"
+            className="w-8 h-8 mt-1.5 bg-main border-none cursor-pointer"
           />
-          <button className="icnStyle rad" >Full Page</button>
+          <button className="icnStyle rad">Full Page</button>
         </div>
       </div>
 
       {editor && (
         <>
-          <BubbleMenu
-            editor={editor}
-            tippyOptions={{ duration: 100 }}
-            className="bg-main w-56 h-9 rad flex justify-center items-center gap-1.5"
-          >
-            <div>
-              <button
-                onClick={() =>
-                  editor.chain().focus().toggleHeading({ level: 1 }).run()
-                }
-                className={
-                  editor.isActive("heading", { level: 1 }) ? "is-active" : ""
-                }
-              >
-                H1
-              </button>
-              <button
-                onClick={() =>
-                  editor.chain().focus().toggleHeading({ level: 2 }).run()
-                }
-                className={
-                  editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-                }
-              >
-                H2
-              </button>
-              <button
-                onClick={() =>
-                  editor.chain().focus().toggleHeading({ level: 3 }).run()
-                }
-                className={
-                  editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-                }
-              >
-                H3
-              </button>
-              <button
-                onClick={() =>
-                  editor.chain().focus().toggleHeading({ level: 4 }).run()
-                }
-                className={
-                  editor.isActive("heading", { level: 4 }) ? "is-active" : ""
-                }
-              >
-                H4
-              </button>
-              <button
-                onClick={() =>
-                  editor.chain().focus().toggleHeading({ level: 5 }).run()
-                }
-                className={
-                  editor.isActive("heading", { level: 5 }) ? "is-active" : ""
-                }
-              >
-                H5
-              </button>
-              <button
-                onClick={() =>
-                  editor.chain().focus().toggleHeading({ level: 6 }).run()
-                }
-                className={
-                  editor.isActive("heading", { level: 6 }) ? "is-active" : ""
-                }
-              >
-                H6
-              </button>
-            </div>
-          </BubbleMenu>
-          <div className="h-5"/>
+          <div className="relative">
+            <BubbleMenu
+              editor={editor}
+              tippyOptions={{ duration: 100 }}
+              className="bg-main w-56 h-9 rad flex items-center gap-3 drop"
+            >
+              <div>
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 1 }).run()
+                  }
+                  className={`icnstyle icnsize rad ${
+                    editor.isActive("heading", { level: 1 }) ? "is-active" : ""
+                  }`}
+                >
+                  H1
+                </button>
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 2 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 2 }) ? "is-active" : ""
+                  }
+                >
+                  H2
+                </button>
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 3 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 3 }) ? "is-active" : ""
+                  }
+                >
+                  H3
+                </button>
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 4 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 4 }) ? "is-active" : ""
+                  }
+                >
+                  H4
+                </button>
+                <button
+                  onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 5 }).run()
+                  }
+                  className={
+                    editor.isActive("heading", { level: 5 }) ? "is-active" : ""
+                  }
+                >
+                  H5
+                </button>
+              </div>
+            </BubbleMenu>
+          </div>
+          <div className="h-5" />
           <EditorContent
             editor={editor}
             className="block bg-note rad h-175 w- p-2.5 gap-1.5 overflow-y-scroll drop"
