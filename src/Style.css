@@ -17,6 +17,7 @@
   --color-logout: var(--logout);
   --rounded-rad: var(--rad);
   --color-note: var(--note);
+  --color-topbar: var(--topbar);
   --color-titlecolor: var(--titlecolor);
   --rounded-title: var(--title);
 }
@@ -24,6 +25,7 @@
 @layer base {
   :root {
     --background: #d9d9d9;
+    --topbar: #d9d9d9;
     --main: #ffa928;
     --text: #000000;
     --hover: #ffffff;
@@ -40,10 +42,12 @@
     --circle1: #B132FF;
     --circle2: #001AFF;
     --circle3: #FF9900;
+    
   }
 
   [data-theme="brat"] {
     --background: #ffffff;
+    --topbar: #ffffff;
     --main: #8ace00;
     --text: black;
     --hover: #ffffff;
@@ -64,6 +68,7 @@
 
   [data-theme="positions"] {
     --background: #dbdbdb;
+    --topbar: #dbdbdb;
     --main: #d9cecc;
     --text: black;
     --hover: #ffffff;
@@ -84,6 +89,7 @@
 
   [data-theme="mono"] {
     --background: #2b2b2b;
+    --topbar: #2b2b2b;
     --main: #ffffff;
     --text: #ffffff;
     --hover: #000000;
@@ -104,6 +110,7 @@
 
   [data-theme="Cat"] {
     --background: #303446;
+    --topbar: #303446;
     --main: #F2D5CF;
     --text: #ffffff;
     --hover: #000000;
@@ -120,6 +127,50 @@
     --circle1: #BABBF1;
     --circle2: #E5C890;
     --circle3: #EEBEBE;
+  }
+
+  [data-theme="Moc"] {
+    --background: #1E1E2E;
+    --topbar: #1E1E2E;
+    --main: #F5E0DC;
+    --text: #ffffff;
+    --hover: #000000;
+    --sec: #45475A;
+    --cal: #45475A;
+    --caltext: #ffffff;
+    --weather: #45475A;
+    --acc: #F2D5CF;
+    --logout: #E5C890;
+    --rad: 10px;
+    --note: #51576D;
+    --titlecolor: #F2D5CF;
+    --title: 0px 10px 10px 0px;
+    --circle1: #BABBF1;
+    --circle2: #E5C890;
+    --circle3: #EEBEBE;
+  }
+
+
+  [data-theme="Luna"]{
+    --background: #5892C9;
+    --topbar:#5892C9;
+    --main: #60B05D;
+    --text: #ffffff;
+    --hover: #ffffff;
+    --sec: #5892C9;
+    --cal: #5892C9;
+    --caltext: #ffffff;
+    --weather:#5892C9;
+    --acc: #3578B6;
+    --logout: #3578B6;
+    --rad: 13px;
+    --note: #FFFFFF;
+    
+    --titlecolor: white;
+    --title: 0px 13px 13px 0px;
+    --circle1: #759620;
+    --circle2: #F5F3F3;
+    --circle3: #2462DC;
   }
 }
 

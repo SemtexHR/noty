@@ -26,6 +26,8 @@ const Settings = () => {
             <option value="positions" >Positions</option>
             <option value="mono">mono</option>
             <option value="Cat">Catpuccin Frapee</option>
+            <option value="Moc">Catpuccin Mocha</option>
+            <option value="Luna">Luna Theme</option>
           </select>
         </div>
         <div className="pos">
