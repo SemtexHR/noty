@@ -6,6 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 import FontFamily from "@tiptap/extension-font-family";
 import CharacterCount from "@tiptap/extension-character-count";
 import { useCallback, useEffect, useState } from "react";
+import { motion } from "motion/react";
 import {
   BoldIcon,
   ItalicIcon,
@@ -65,7 +66,10 @@ const Tiptap = () => {
   return (
     <>
       <div className="h-5" />
-      <div className="bg-main flex w-[645px] h-[53px] rad items-center justify-evenly drop">
+      <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="bg-main flex w-161.25 h-13.25 rad items-center justify-evenly drop">
         <div className=" flex justify-evenly gap-2.5">
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
@@ -195,7 +199,7 @@ const Tiptap = () => {
           />
           <button className="icnStyle rad">Full Page</button>
         </div>
-      </div>
+      </motion.div>
 
       {editor && (
         <>
@@ -203,9 +207,8 @@ const Tiptap = () => {
             <BubbleMenu
               editor={editor}
               tippyOptions={{ duration: 100 }}
-              className="bg-main w-56 h-9 rad flex items-center gap-3 drop"
+              className="bg-main w-56 h-9 rad flex items-center justify-center gap-3 drop"
             >
-              <div>
                 <button
                   onClick={() =>
                     editor.chain().focus().toggleHeading({ level: 1 }).run()
@@ -256,13 +259,12 @@ const Tiptap = () => {
                 >
                   H5
                 </button>
-              </div>
             </BubbleMenu>
           </div>
           <div className="h-5" />
           <EditorContent
             editor={editor}
-            className="block bg-note rad h-175 w- p-2.5 gap-1.5 overflow-y-scroll drop"
+            className="block bg-note rad h-175  p-2.5 gap-1.5 overflow-y-scroll drop"
           />
         </>
       )}

@@ -3,10 +3,10 @@
 <circle cx="712" cy="333" r="265" fill="var(--circle1)"/>
 </g>
 <g filter="url(#filter1_f_706_836)">
-<circle cx="1209" cy="438" r="265" fill="#var(--circle2)"/>
+<circle cx="1209" cy="438" r="265" fill="var(--circle2)"/>
 </g>
 <g filter="url(#filter2_f_706_836)">
-<circle cx="265" cy="265" r="265" transform="matrix(0.999684 -0.025145 0.0239811 0.999712 593.584 492.737)" fill="var(--circle)"/>
+<circle cx="265" cy="265" r="265" transform="matrix(0.999684 -0.025145 0.0239811 0.999712 593.584 492.737)" fill="var(--circle3)"/>
 </g>
 <rect width="1920" height="1090" rx="15" fill="url(#pattern0_706_836)" fill-opacity="0.2"/>
 <defs>

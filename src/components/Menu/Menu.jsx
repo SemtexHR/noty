@@ -7,7 +7,7 @@ const BTmenu = () => {
   return (
     <div className=" fixed flex">
       <div className=" w-[366px] h-[95px] flex justify-evenly flex-rows rad transition-all bg-sec rounded-title drop lg:w-[732px]">
-        <Link to="/home">
+        <Link to="/">
           <button className="Mbtn rad">
             Home
           </button>

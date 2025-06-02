@@ -19,7 +19,7 @@ export default function TopBar(){
 
   return (
     <div
-      className=" fixed z-50 w-full h-8 px-3 flex items-center justify-between bg-background drop-shadow-xl drop-shadow-white/25"
+      className=" fixed z-50 w-full h-8 px-3 flex items-center justify-between noisetp bg-topbar  drop-shadow-xl drop-shadow-white/25"
       data-tauri-drag-region
     >
       <div className="flex mr-[150px] w-[100px] justify-evenly">
@@ -37,7 +37,7 @@ export default function TopBar(){
         />
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2  font-JetBrains font-light text-titlecolor tracking-wide select-none pointer-events-none">
+      <div className="absolute left-1/2 -translate-x-1/2  font-JetBrains font-light text-titlecolor tracking-[-0.5px] select-none pointer-events-none">
         (N)oty
       </div>
 

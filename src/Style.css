@@ -1,10 +1,31 @@
 @import "tailwindcss";
-
 @import "./App.css";
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/poppins/100.css';
+@import '@fontsource/poppins/200.css';
+@import '@fontsource/poppins/300.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+@import '@fontsource/poppins/800.css';
+@import '@fontsource/poppins/900.css';
+@import '@fontsource/poppins/100-italic.css';
+@import '@fontsource/poppins/200-italic.css';
+@import '@fontsource/poppins/300-italic.css';
+@import '@fontsource/poppins/400-italic.css';
+@import '@fontsource/poppins/500-italic.css';
+@import '@fontsource/poppins/600-italic.css';
+@import '@fontsource/poppins/700-italic.css';
+@import '@fontsource/poppins/800-italic.css';
+@import '@fontsource/poppins/900-italic.css';
+
+
+
 
 @theme {
-  --font-JetBrains: "JetBrains Mono";
-  --font-Poppins: "Poppins";
+  --font-JetBrains: 'JetBrains Mono Variable', monospace;
+  --font-Poppins: 'Poppins', sans-serif;
   --color-background: var(--background);
   --color-main: var(--main);
   --color-text: var(--text);
@@ -21,6 +42,8 @@
   --color-titlecolor: var(--titlecolor);
   --rounded-title: var(--title);
 }
+
+
 
 @layer base {
   :root {
@@ -165,7 +188,6 @@
     --logout: #3578B6;
     --rad: 13px;
     --note: #FFFFFF;
-    
     --titlecolor: white;
     --title: 0px 13px 13px 0px;
     --circle1: #759620;
@@ -185,21 +207,27 @@
     border-radius: var(--title);
   }
   .drop {
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
   }
   .pos {
     @apply col-span-full row-start-11 z-10 flex justify-center;
   }
 
   .icnsize{
-    @apply w-4.5 h-4.5;
+    @apply w-4.75 h-6.5;
   }
 
   .icnStyle{
     @apply bg-transparent text-hover p-1 transition-all hover:text-text hover:bg-hover active:bg-hover;
   }
 
-  
+  .btnstyle{
+    @apply bg-transparent text-hover p-1 transition-all hover:text-text hover:bg-hover active:bg-hover;
+  }
+
+  .noisetp{
+    filter: url(assets/top.svg#noise);
+  }
 }
 ::-webkit-scrollbar{
   background-color: var(--note);
@@ -208,7 +236,7 @@
 ::-webkit-scrollbar-thumb{
   background-color: var(--main);
   border-radius: var(--rad);
-  box-shadow: 0px 8px 4px #00000025;
+  box-shadow: 0 8px 4px #00000025;
 }
 
 .ProseMirror {
@@ -251,7 +279,7 @@
   }
 
   blockquote{
-    background-color: var(--blockquote);
+    background-color: lightgray;
     padding: 5px;
     border-radius: 3px;
   }
