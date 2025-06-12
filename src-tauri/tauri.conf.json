@@ -15,11 +15,13 @@
         "title": "(N)oty",
         "width": 800,
         "height": 600,
-        "minHeight": 500,
+        "minHeight": 600,
         "minWidth": 500,
         "decorations": false,
-        "transparent": true
+        "transparent": true,
+        "resizable": true
       }
+      
     ],
     "security": {
       "csp": null

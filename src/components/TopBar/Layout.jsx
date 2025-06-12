@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <div className="h-screen w-screen flex flex-col">
       <TopBar />
-      <div className="flex-1 overflow-auto h-max">
+      <div className="flex-1 overflow-auto h-dvh">
         <Outlet />
       </div>
     </div>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <div className="grid grid-cols-3 grid-rows-10">
+      <div className="grid grid-cols-3 grid-rows-10 transition-all">
         <div className="row-start-2 col-span-full flex flex-col">
           <PageTitle name="Home" />
           <div className="w-full" />

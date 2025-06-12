@@ -20,6 +20,9 @@
 @import '@fontsource/poppins/800-italic.css';
 @import '@fontsource/poppins/900-italic.css';
 
+@custom-variant sm-h (@media (min-height: 36rem));
+@custom-variant md-h (@media (min-height: 50rem));
+@custom-variant lg-h (@media (min-height: 62rem));
 
 
 
@@ -210,7 +213,7 @@
     box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
   }
   .pos {
-    @apply col-span-full row-start-11 z-10 flex justify-center;
+    @apply col-span-full row-start-11 z-10 flex justify-center sm-h:row-start-7 md-h:row-start-9 lg-h:row-start-11;
   }
 
   .icnsize{
